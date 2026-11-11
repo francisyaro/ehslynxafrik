@@ -5,6 +5,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { QuoteProvider } from "@/components/quote-provider";
 import { QuoteDrawer } from "@/components/quote-drawer";
 import "./globals.css";
+import "./refinement.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://ehslynxafrik.com"),
