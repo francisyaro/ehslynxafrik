@@ -24,7 +24,10 @@ export function QuoteProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     try {
       const stored = JSON.parse(window.localStorage.getItem("ehs-quote") || "[]") as CartItem[];
-      if (Array.isArray(stored)) setItems(stored.filter(item => products.some(p => p.slug === item.slug) && Number.isInteger(item.quantity) && item.quantity > 0 && item.quantity <= 99));
+      if (Array.isArray(stored)) {
+        const restored = stored.filter(item => products.some(p => p.slug === item.slug) && Number.isInteger(item.quantity) && item.quantity > 0 && item.quantity <= 99);
+        queueMicrotask(() => setItems(restored));
+      }
     } catch { /* ignore invalid stored data */ }
   }, []);
   useEffect(() => {
