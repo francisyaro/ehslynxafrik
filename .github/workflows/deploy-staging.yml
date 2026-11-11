@@ -1,0 +1,58 @@
+name: Deploy staging
+on:
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
+    branches: [develop]
+permissions:
+  contents: read
+concurrency:
+  group: ehs-staging
+  cancel-in-progress: true
+jobs:
+  deploy:
+    if: github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'push'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    environment: staging
+    env:
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+      - name: Install dependencies
+        run: |
+          if [[ -f package-lock.json ]]; then npm ci --no-audit --no-fund; else npm install --no-audit --no-fund; fi
+      - name: Require staging deployment credentials
+        shell: bash
+        run: |
+          for name in VERCEL_TOKEN VERCEL_ORG_ID VERCEL_PROJECT_ID SUPABASE_DB_URL; do
+            if [[ -z "${!name}" ]]; then echo "::error::$name is missing"; exit 1; fi
+          done
+      - name: Setup Supabase CLI
+        uses: supabase/setup-cli@v3
+      - name: Preview database migrations
+        run: supabase db push --dry-run --remote="$SUPABASE_DB_URL"
+      - name: Apply staging database migrations
+        run: supabase db push --yes --remote="$SUPABASE_DB_URL"
+      - name: Install deployment tools
+        run: npm install --global vercel@latest
+      - name: Pull staging/preview variables
+        run: vercel pull --yes --environment=preview --token="$VERCEL_TOKEN"
+      - name: Build
+        run: vercel build --token="$VERCEL_TOKEN"
+      - name: Deploy
+        run: |
+          vercel deploy --prebuilt --token="$VERCEL_TOKEN" > staging-url.txt
+          echo "Staging preview: $(cat staging-url.txt)" >> "$GITHUB_STEP_SUMMARY"
+      - name: HTTP smoke test
+        run: |
+          url=$(cat staging-url.txt)
+          curl --fail --retry 5 --retry-delay 2 --max-time 20 "$url/api/health"

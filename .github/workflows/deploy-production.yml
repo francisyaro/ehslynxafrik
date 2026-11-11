@@ -1,0 +1,64 @@
+name: Deploy production (controlled)
+on:
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
+    branches: [main]
+permissions:
+  contents: read
+concurrency:
+  group: ehs-production
+  cancel-in-progress: false
+jobs:
+  production:
+    if: vars.PRODUCTION_ENABLED == 'true' && github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'push'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    environment: production
+    env:
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+      - name: Install dependencies
+        run: |
+          if [[ -f package-lock.json ]]; then npm ci --no-audit --no-fund; else npm install --no-audit --no-fund; fi
+      - name: Require all deployment secrets
+        shell: bash
+        run: |
+          for name in VERCEL_TOKEN VERCEL_ORG_ID VERCEL_PROJECT_ID SUPABASE_DB_URL; do
+            if [[ -z "${!name}" ]]; then echo "::error::$name is missing"; exit 1; fi
+          done
+      - name: Protect schema from obvious destructive operations
+        run: |
+          if grep -Ein '(^|[[:space:]])(drop|truncate)[[:space:]]|alter[[:space:]]+table.*drop[[:space:]]+column' supabase/migrations/*.sql; then
+            echo 'Destructive migration detected; manual review required.'; exit 1
+          fi
+      - name: Install Supabase CLI
+        uses: supabase/setup-cli@v3
+      - name: Check intended migration target
+        run: supabase db push --dry-run --remote="$SUPABASE_DB_URL"
+      - name: Apply approved migrations
+        run: supabase db push --yes --remote="$SUPABASE_DB_URL"
+      - name: Install Vercel CLI
+        run: npm install --global vercel@latest
+      - name: Pull production variables
+        run: vercel pull --yes --environment=production --token="$VERCEL_TOKEN"
+      - name: Build approved commit
+        run: vercel build --prod --token="$VERCEL_TOKEN"
+      - name: Deploy approved commit
+        run: |
+          vercel deploy --prebuilt --prod --token="$VERCEL_TOKEN" > deployment-url.txt
+          echo "Production commit: ${{ github.event.workflow_run.head_sha }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "Deployment: $(cat deployment-url.txt)" >> "$GITHUB_STEP_SUMMARY"
+      - name: HTTP smoke test
+        run: |
+          url=$(cat deployment-url.txt)
+          curl --fail --retry 5 --retry-delay 2 --max-time 20 "$url/api/health"

@@ -1,2 +1,3 @@
-import {NextResponse} from "next/server";
-export async function GET(){return NextResponse.json({status:"ok",application:"ehs-lynx-afrik",environment:"preview"});}
+import { NextResponse } from "next/server";
+export const dynamic = "force-dynamic";
+export function GET(){return NextResponse.json({status:"ok",service:"ehs-lynx-afrik",timestamp:new Date().toISOString()},{headers:{"Cache-Control":"no-store"}})}

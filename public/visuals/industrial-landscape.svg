@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 670" fill="none">
+<defs>
+ <linearGradient id="sky" x1="100" y1="30" x2="660" y2="650" gradientUnits="userSpaceOnUse"><stop stop-color="#133845"/><stop offset=".57" stop-color="#163D43"/><stop offset="1" stop-color="#071B27"/></linearGradient>
+ <linearGradient id="orb" x1="275" y1="20" x2="560" y2="470" gradientUnits="userSpaceOnUse"><stop stop-color="#CCFF7A"/><stop offset=".55" stop-color="#81D9A8"/><stop offset="1" stop-color="#21B995"/></linearGradient>
+ <linearGradient id="tower" x1="100" y1="250" x2="350" y2="600" gradientUnits="userSpaceOnUse"><stop stop-color="#79AC9E"/><stop offset="1" stop-color="#1D4B54"/></linearGradient>
+ <radialGradient id="halo" cx="0" cy="0" r="1" gradientTransform="translate(457 250) rotate(90) scale(280 280)"><stop stop-color="#A7F06E" stop-opacity=".13"/><stop offset="1" stop-color="#A7F06E" stop-opacity="0"/></radialGradient>
+ <filter id="glow" x="-70%" y="-70%" width="240%" height="240%"><feGaussianBlur stdDeviation="6"/></filter>
+ <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#6BA9A4" opacity=".2"/></pattern>
+</defs>
+<rect width="760" height="670" rx="26" fill="url(#sky)"/>
+<rect width="760" height="670" rx="26" fill="url(#dots)"/>
+<circle cx="457" cy="270" r="267" fill="url(#halo)"/>
+<circle cx="457" cy="272" r="205" stroke="#B1E888" stroke-opacity=".13"/>
+<circle cx="457" cy="272" r="161" stroke="#B1E888" stroke-opacity=".2" stroke-dasharray="3 9"/>
+<circle cx="457" cy="272" r="108" stroke="#B1E888" stroke-opacity=".16"/>
+<path d="M-50 550 760 426v244H0z" fill="#102E36"/>
+<path d="M0 600 760 480" stroke="#9AEB96" stroke-opacity=".15"/>
+<path d="M0 632 760 512" stroke="#9AEB96" stroke-opacity=".09"/>
+<!-- industrial background -->
+<g opacity=".42" stroke="#83AAA3" stroke-width="2">
+ <path d="M24 498h125v-82h40v82h38v-54h38v54h51v-92h72v92h34v-62h51v62h67v-102h65v102h105"/>
+ <path d="M62 415V303m-10 0h20m-10 0 18 112M147 415V278m-10 0h20m-10 0 20 137"/>
+ <path d="M42 323h125M42 344h125M42 365h125" opacity=".4"/>
+ <path d="M552 395V245h18v150M535 270h54M542 270l27-25"/>
+ <path d="M590 395v-70h16v70M611 395v-123h13v123"/>
+</g>
+<!-- machinery rising foreground -->
+<g>
+<path d="M90 564h182v-22H90z" fill="#2C6363"/>
+<path d="M114 543V368h132v175" fill="url(#tower)"/>
+<path d="M124 383h114M124 406h114M124 429h114M124 452h114M124 475h114M124 498h114" stroke="#143E49" stroke-width="4"/>
+<path d="M125 371 182 294l56 77M125 371l113-1M146 344h71" stroke="#92D6AA" stroke-width="8" stroke-linejoin="round"/>
+<path d="M161 289h43v-24h-43z" fill="#C5EEB7"/>
+<path d="M180 265V196M180 196h101l-11 19h-90M211 196v65M271 196l-12 65" stroke="#B0DACA" stroke-width="5"/>
+<path d="M181 196 239 151M239 151l58 45" stroke="#A7D6B7" stroke-width="3"/>
+<path d="M320 560h196v-22H320z" fill="#2F6965"/>
+<path d="M341 539V396h148v143" fill="#30676A"/>
+<path d="M341 396h148M341 430h148M341 464h148M341 498h148" stroke="#98C7B2" stroke-opacity=".28" stroke-width="4"/>
+<path d="M366 396v-83h12v83m65 0V280h14v116" stroke="#AFD1BC" stroke-width="5"/>
+<path d="M368 316h97M356 340h118" stroke="#83B4A6" stroke-width="4"/>
+<path d="M552 564h148v-17H552z" fill="#2A655F"/>
+<path d="M568 546V437h117v109" fill="#31665F"/>
+<path d="M580 454h94M580 477h94M580 501h94M580 525h94" stroke="#8CC6A0" stroke-opacity=".3" stroke-width="3"/>
+</g>
+<!-- measurement waves -->
+<path d="M28 235h84l15-20 14 39 18-80 20 112 17-53 18 3h86" stroke="#A2F26E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".85"/>
+<circle cx="457" cy="272" r="10" fill="#CBF67B"/>
+<circle cx="457" cy="272" r="23" stroke="#CBF67B" stroke-opacity=".72"/>
+<path d="M457 272 577 162" stroke="#C1EF85" stroke-width="1.5" stroke-dasharray="6 6"/>
+<circle cx="577" cy="162" r="5" fill="#CBF67B"/>
+<path d="M425 116c-56 21-95 63-108 118" stroke="#BAED92" stroke-width="3" stroke-linecap="round" opacity=".5"/>
+<path d="M608 301c-9 48-35 83-73 111" stroke="#BAED92" stroke-width="3" stroke-linecap="round" opacity=".35"/>
+<g fill="#BCE9B7" opacity=".75">
+ <circle cx="305" cy="145" r="3"/><circle cx="350" cy="105" r="2"/><circle cx="665" cy="229" r="3"/><circle cx="613" cy="382" r="2"/>
+</g>
+<g stroke="#BDF39A" stroke-opacity=".25"><path d="M0 566h760M0 595h760M0 626h760"/></g>
+</svg>
