@@ -1,0 +1,54 @@
+
+/* Authentic partners' logos — faithful image files supplied by EHS LYNX AFRIK */
+.partner-strip { background:#fff; border-bottom:1px solid #e1eae3; }
+.partner-strip-layout { display:grid;grid-template-columns:205px minmax(0,1fr);gap:30px;min-height:140px;align-items:center;padding-top:18px;padding-bottom:18px; }
+.partner-strip-heading { display:grid;gap:8px; }
+.partner-strip-heading>span { font-size:10px;font-weight:780;color:#37765a;letter-spacing:.11em; }
+.partner-strip-heading h2 { font-size:15px;font-weight:650;line-height:1.35;color:#364b4c;letter-spacing:-.02em;margin:0; }
+.partner-logo-grid { display:grid;grid-template-columns:repeat(4,minmax(0,1fr));align-items:center;gap:22px; }
+.partner-logo-cell { height:86px;display:flex;align-items:center;justify-content:center;padding:10px 6px;min-width:0; }
+.partner-logo-cell+ .partner-logo-cell { border-left:1px solid #e4ebe6; }
+.partner-logo-cell img { display:block;width:100%;height:100%;max-height:66px;max-width:230px;object-fit:contain;object-position:center; }
+.partner-logo-cell:nth-child(1) img { max-height:59px; }
+.partner-logo-cell:nth-child(3) img { max-height:46px; }
+.partner-logo-cell:nth-child(4) img { max-height:54px; }
+
+/* Commerce redirect section — no duplicate internal product grid on the homepage. */
+.shop-bridge-section { background:#f6f9f5;padding:90px 0; }
+.shop-bridge-grid { display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:76px;align-items:center; }
+.shop-bridge-copy h2 { font-size:clamp(2.4rem,3.8vw,4.2rem);font-weight:600;line-height:1.12;letter-spacing:-.055em;max-width:650px;margin:20px 0 22px; }
+.shop-bridge-copy h2 em { color:#2a7759; }
+.shop-bridge-copy>p { font-size:15px;line-height:1.8;color:#627871;max-width:600px;margin:0 0 26px; }
+.shop-bridge-cta { display:inline-flex;align-items:center;gap:12px; }
+.shop-bridge-note { display:block;color:#7b9287;font-size:11px;margin-top:16px; }
+.shop-bridge-card { display:flex;flex-direction:column;justify-content:space-between;min-height:325px;border:1px solid #dce7dd;background:#fff;border-radius:6px;padding:35px 34px;box-shadow:0 12px 35px rgba(31,68,52,.035);transition:box-shadow .2s,border-color .2s; }
+.shop-bridge-card:hover { border-color:#aecaba;box-shadow:0 14px 36px rgba(31,68,52,.08); }
+.shop-bridge-card-top { display:flex;align-items:center;justify-content:space-between;gap:15px;color:#527365;font-size:10px;letter-spacing:.10em;font-weight:750; }
+.shop-bridge-card-top>span:last-child { display:inline-flex;align-items:center;gap:9px;text-align:right; }
+.shop-bridge-icon { width:56px;height:56px;border-radius:6px;background:#eef5ef;color:#267254;display:grid;place-items:center;flex-shrink:0; }
+.shop-bridge-brand { font-size:clamp(2.4rem,4vw,4.4rem);letter-spacing:-.065em;font-weight:650;line-height:1.1;color:#234e47;margin:42px 0 0; }
+.shop-bridge-brand strong { color:#317e58;display:block; }
+.shop-bridge-card-caption { color:#6b847a;font-size:12px;line-height:1.7;margin-top:12px; }
+.shop-bridge-url { color:#285d48;font-size:14px;font-weight:750;padding-top:18px;border-top:1px solid #e2ece4;margin-top:22px;display:flex;align-items:center;justify-content:space-between; }
+.main-nav .nav-shop-link { display:inline-flex;align-items:center;gap:4px; }
+.footer-links-group a svg { display:inline-block;vertical-align:middle;margin-left:2px; }
+@media(max-width:1090px) {
+  .partner-strip-layout { grid-template-columns:1fr;gap:12px;padding-top:24px;padding-bottom:18px; }
+  .partner-strip-heading { display:flex;align-items:center;justify-content:space-between;gap:12px; }
+  .partner-logo-grid { gap:10px; }
+  .partner-logo-cell { height:72px; }
+  .shop-bridge-grid { gap:35px; }
+}
+@media(max-width:750px) {
+  .partner-strip-heading { align-items:flex-start;flex-direction:column;gap:4px; }
+  .partner-logo-grid { grid-template-columns:repeat(2,minmax(0,1fr));gap:5px 12px; }
+  .partner-logo-cell { height:73px;border:1px solid #edf1ed!important;border-radius:4px;padding:11px; }
+  .partner-logo-cell img { max-width:225px; }
+  .shop-bridge-section { padding:65px 0; }
+  .shop-bridge-grid { grid-template-columns:1fr;gap:32px; }
+  .shop-bridge-card { min-height:265px;padding:25px; }
+  .shop-bridge-brand { margin-top:28px; }
+}
+@media(prefers-reduced-motion:reduce){
+  .shop-bridge-card { transition:none; }
+}

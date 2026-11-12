@@ -56,8 +56,8 @@ const slides: Slide[] = [
     title: "Mesurer avec précision.",
     accent: "Décider avec confiance.",
     description: "De l’évaluation du bruit au choix d’équipements de métrologie, nous facilitons des décisions techniques adaptées à la réalité de votre activité.",
-    action: "Explorer les équipements",
-    href: "/equipements",
+    action: "Visiter la boutique",
+    href: "https://www.lynxafrik.shop/",
     imageCaption: "MÉTROLOGIE EN MILIEU INDUSTRIEL",
     position: "54% center",
   },
@@ -110,7 +110,7 @@ export function HeroSlideshow() {
               <h1>{current.title} <em>{current.accent}</em></h1>
               <p>{current.description}</p>
               <div className="ehs-carousel-actions">
-                <Link href={current.href} className="ehs-carousel-primary">
+                <Link href={current.href} target={current.href.startsWith("https://") ? "_blank" : undefined} rel={current.href.startsWith("https://") ? "noopener noreferrer" : undefined} className="ehs-carousel-primary">
                   {current.action} <ArrowUpRight size={17} aria-hidden="true" />
                 </Link>
                 <Link href="/contact" className="ehs-carousel-secondary">

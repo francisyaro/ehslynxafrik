@@ -7,6 +7,7 @@ import { QuoteDrawer } from "@/components/quote-drawer";
 import "./globals.css";
 import "./refinement.css";
 import "./carousel.css";
+import "./brands-shop.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://ehslynxafrik.com"),
