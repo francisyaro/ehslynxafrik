@@ -1,8 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight, BookOpen, FlaskConical, Leaf, MoveUpRight, ShieldCheck, ShoppingBag, Waves, Wind } from "lucide-react";
-import { services, sectors, learningOffers } from "@/lib/data";
+import { services, sectors } from "@/lib/data";
 import { HeroSlideshow } from "@/components/hero-slideshow";
+import { AcademyPromo } from "@/components/academy-promo";
 
 const serviceIcons=[Waves,Leaf,Wind,ShieldCheck,FlaskConical,BookOpen];
 
@@ -52,7 +53,7 @@ export default function Home() {
 
         <section className="sectors-section"><div className="container sectors-grid"><div><span className="eyebrow lime"><span className="eyebrow-line"/> SECTEURS D'INTERVENTION</span><h2>Chaque secteur a ses risques.<br/><em>Nous en connaissons les enjeux.</em></h2><p>Nous adaptons nos méthodes et nos solutions aux environnements de travail de chaque organisation.</p><Link className="btn btn-outline-light" href="/contact">Parlons de votre secteur <ArrowUpRight size={18}/></Link></div><div className="sector-list">{sectors.map((sector,i)=><div key={sector}><span>0{i+1}</span><strong>{sector}</strong><ArrowUpRight size={18}/></div>)}</div></div></section>
 
-    <section className="academy-section section"><div className="container"><div className="academy-top"><div><span className="eyebrow"><span className="eyebrow-line"/> LYNX ACADEMY</span><h2>Le savoir est aussi un <em>équipement de protection.</em></h2></div><p>Développez les compétences qui permettent de mieux reconnaître, évaluer et maîtriser les risques professionnels et environnementaux.</p></div><div className="academy-intro"><div className="academy-intro-icon"><BookOpen size={28}/></div><div><span>UNE PLATEFORME POUR APPRENDRE ET PROGRESSER</span><strong>Formations · Webinaires · Ressources</strong></div><Link href="/academy">Découvrir LYNX Academy <ArrowUpRight size={19}/></Link></div><div className="learning-grid">{learningOffers.map((offer,i)=><Link href="/academy" className="learning-card" key={offer.kind}><span className="learning-n">0{i+1}</span><span className="learning-kind">{offer.kind}</span><h3>{offer.title}</h3><p>{offer.description}</p><ArrowUpRight size={21}/></Link>)}</div></div></section>
+    <AcademyPromo />
 
     <section className="closing-section"><div className="container closing-inner"><div><span className="eyebrow lime">VOTRE PROCHAIN PAS</span><h2>Un environnement plus sûr commence par <em>une conversation.</em></h2></div><div><p>Une question technique, un besoin d’équipement ou un projet de formation ? Échangeons sur la solution qui vous convient.</p><Link className="btn btn-lime" href="/contact">Nous contacter <ArrowUpRight size={18}/></Link></div></div></section>
   </>;

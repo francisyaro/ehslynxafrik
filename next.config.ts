@@ -3,7 +3,10 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   async redirects() {
-    return [{ source: "/lynx-academy-3", destination: "/academy", permanent: true }];
+    return [
+      { source: "/academy", destination: "https://lynx-academy.vercel.app/", permanent: false },
+      { source: "/lynx-academy-3", destination: "https://lynx-academy.vercel.app/", permanent: false },
+    ];
   },
   poweredByHeader: false,
   async headers() {

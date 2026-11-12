@@ -10,7 +10,7 @@ import { useQuote } from "./quote-provider";
 type NavItem = { href: string; label: string; external?: boolean };
 const nav: NavItem[] = [
   { href:"/", label:"Accueil" }, { href:"/expertises", label:"Expertises" },
-  { href:"https://www.lynxafrik.shop/", label:"Boutique", external:true }, { href:"/academy", label:"LYNX Academy" },
+  { href:"https://www.lynxafrik.shop/", label:"Boutique", external:true }, { href:"https://lynx-academy.vercel.app/", label:"LYNX Academy", external:true },
   { href:"/a-propos", label:"À propos" }, { href:"/ressources", label:"Ressources" },
 ];
 export function SiteHeader() {
