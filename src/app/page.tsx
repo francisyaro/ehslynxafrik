@@ -1,26 +1,14 @@
 import Link from "next/link";
-import Image from "next/image";
-import { ArrowRight, ArrowUpRight, AudioLines, BookOpen, Check, ChevronDown, CircleDot, FlaskConical, Leaf, MoveUpRight, ShieldCheck, Waves, Wind } from "lucide-react";
+import { ArrowRight, ArrowUpRight, BookOpen, CircleDot, FlaskConical, Leaf, MoveUpRight, ShieldCheck, Waves, Wind } from "lucide-react";
 import { services, products, sectors, learningOffers } from "@/lib/data";
 import { ProductCard } from "@/components/product-card";
+import { HeroSlideshow } from "@/components/hero-slideshow";
 
 const serviceIcons=[Waves,Leaf,Wind,ShieldCheck,FlaskConical,BookOpen];
 
 export default function Home() {
   return <>
-    <section className="hero-section">
-      <div className="hero-noise"/>
-      <div className="container hero-main"><div className="hero-copy">
-        <span className="hero-eyebrow"><span className="dot-pulse"/> L'EXPERTISE QUI ANTICIPE LES RISQUES</span>
-        <h1>La mesure au service d’un <em>monde plus sûr.</em></h1>
-        <p>Hygiène industrielle, solutions de métrologie et formation professionnelle. Nous aidons les organisations à comprendre leurs expositions, à agir avec précision et à protéger durablement.</p>
-        <div className="hero-actions"><Link className="btn btn-lime" href="/contact">Parler à un expert <ArrowUpRight size={19}/></Link><Link className="btn btn-ghost" href="/expertises">Découvrir nos expertises <ArrowRight size={17}/></Link></div>
-        <div className="hero-proof"><div className="hero-proof-icon"><Check size={17}/></div><span>Des réponses adaptées aux réalités des entreprises africaines.</span></div>
-      </div>
-      <div className="hero-art" aria-hidden="true"><Image src="/visuals/industrial-landscape.svg" alt="" fill priority className="hero-landscape"/><div className="art-grid"/><div className="signal-card"><span className="signal-circle"><AudioLines size={22}/></span><div><span className="signal-label">DOMAINES DE MESURE</span><strong>Bruit & vibrations</strong><small>Évaluation des expositions</small></div><span className="signal-arrow"><ArrowUpRight size={17}/></span></div><div className="radar-tag"><CircleDot size={14}/> ANALYSE · MESURE · PRÉVENTION</div></div>
-      </div>
-      <div className="container hero-bottom"><div><strong>01<span>/</span>03</strong><span>Conseil, instrumentation, formation</span></div><Link href="#expertises" aria-label="Découvrir les expertises"><ChevronDown size={20}/></Link><span>BURKINA FASO · AFRIQUE</span></div>
-    </section>
+    <HeroSlideshow />
 
     <section className="trust-strip"><div className="container trust-inner"><span className="trust-caption">DES SOLUTIONS PORTÉES PAR DES FABRICANTS SPÉCIALISÉS</span><div className="trust-names"><span>SVANTEK</span><span>SENSIDYNE</span><span>SLATESAFETY</span><span>OHD</span></div></div></section>
 

@@ -1,0 +1,44 @@
+
+/* Bandeau photo EHS LYNX AFRIK : clair, sobre, navigation accessible */
+.ehs-carousel{background:#f8faf7;color:#203d40;border-bottom:1px solid #e0e9e2}
+.ehs-carousel-frame{display:grid;grid-template-columns:minmax(0,44%) minmax(0,56%);min-height:570px;width:100%;margin:0 auto;max-width:1920px}
+.ehs-carousel-copy{display:flex;min-width:0;padding:58px clamp(24px,3vw,54px) 31px max(28px,calc((100vw - 1320px)/2 + 40px));background:linear-gradient(125deg,#fff 5%,#f5f9f5 100%)}
+.ehs-carousel-inner{display:flex;flex-direction:column;justify-content:space-between;width:100%;min-width:0}
+.ehs-carousel-topline{display:flex;align-items:center;flex-wrap:wrap;gap:10px;color:#658178;font-size:9px;font-weight:750;letter-spacing:.11em;line-height:1.6}
+.ehs-carousel-topline-mark{height:7px;width:7px;background:#388465;border-radius:50%;flex-shrink:0}
+.ehs-carousel-separator{height:13px;width:1px;background:#d2e0d7}
+.ehs-carousel-text{margin:35px 0 28px;animation:ehs-slide-appear .4s ease both}
+.ehs-carousel-kicker{color:#34775c;font-weight:800;letter-spacing:.16em;font-size:11px;line-height:1.7}
+.ehs-carousel-text h1{font-size:clamp(2.7rem,4.15vw,4.45rem);font-weight:600;letter-spacing:-.055em;line-height:1.09;margin:16px 0 20px;color:#203d40}
+.ehs-carousel-text h1 em{color:#367857;display:block;margin-top:5px;font-family:Georgia,"Times New Roman",serif;font-size:.94em;font-style:italic;font-weight:400;letter-spacing:-.05em}
+.ehs-carousel-text p{font-size:14px;line-height:1.8;color:#657b79;max-width:480px;margin-bottom:27px}
+.ehs-carousel-actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.ehs-carousel-primary,.ehs-carousel-secondary{min-height:46px;display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:0 18px;font-size:12px;font-weight:750;border-radius:4px;white-space:nowrap;transition:background .2s ease,color .2s ease}
+.ehs-carousel-primary{background:#22634d;color:#fff}
+.ehs-carousel-primary:hover{background:#184a39;color:#fff}
+.ehs-carousel-secondary{background:#fff;border:1px solid #cdded2;color:#356856}
+.ehs-carousel-secondary:hover{background:#edf4ef}
+.ehs-carousel-controls{display:flex;align-items:center;gap:25px;border-top:1px solid #e2eae3;padding-top:20px}
+.ehs-carousel-count{font-size:14px;letter-spacing:.04em;font-weight:800;color:#2d654f;font-variant-numeric:tabular-nums}
+.ehs-carousel-count span{color:#93a89b;font-weight:500}
+.ehs-carousel-dots{display:flex;align-items:center;gap:8px;flex:1}
+.ehs-carousel-dot{border:0;border-radius:3px;background:#d3dfd6;width:18px;height:4px;padding:0;transition:width .2s,background .2s}
+.ehs-carousel-dot.is-current{width:35px;background:#2a7658}
+.ehs-carousel-play{border:1px solid #d7e5da;background:#fff;color:#42765f;display:grid;place-items:center;width:31px;height:31px;border-radius:50%}
+.ehs-carousel-photo{position:relative;min-width:0;min-height:570px;overflow:hidden;background:#e8eee9}
+.ehs-carousel-image{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .7s ease,visibility .7s ease}
+.ehs-carousel-image.is-current{opacity:1;visibility:visible}
+.ehs-carousel-image img{width:100%;height:100%;object-fit:cover}
+.ehs-carousel-image[data-fit="contain"]{background:#edf2ee}
+.ehs-carousel-image[data-fit="contain"] img{object-fit:contain}
+.ehs-carousel-photo-gradient{position:absolute;inset:60% 0 0;background:linear-gradient(0deg,rgba(12,34,34,.60),rgba(12,34,34,0));pointer-events:none}
+.ehs-carousel-photo-caption{position:absolute;left:34px;bottom:39px;color:#fff;font-size:10px;letter-spacing:.12em;font-weight:750;text-shadow:0 1px 5px #14291c80;max-width:58%}
+.ehs-carousel-arrows{position:absolute;right:32px;bottom:25px;display:flex;gap:7px}
+.ehs-carousel-arrows button{width:43px;height:43px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.75);background:#fffffff0;color:#265544;border-radius:4px;transition:background .2s}
+.ehs-carousel-arrows button:hover{background:#e8f4e9}
+.ehs-carousel :is(button,a):focus-visible{outline:2px solid #2d7d5d;outline-offset:3px}
+@keyframes ehs-slide-appear{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:1110px){.ehs-carousel-frame{grid-template-columns:minmax(0,47%) minmax(0,53%)}.ehs-carousel-copy{padding-left:35px;padding-right:28px}.ehs-carousel-text h1{font-size:clamp(2.55rem,4.3vw,3.5rem)}.ehs-carousel-text p{font-size:13px}.ehs-carousel-actions{gap:9px}.ehs-carousel-primary,.ehs-carousel-secondary{padding-inline:14px;font-size:11px}}
+@media(max-width:900px){.ehs-carousel-frame{grid-template-columns:1fr;min-height:auto}.ehs-carousel-photo{order:-1;min-height:0;height:330px}.ehs-carousel-copy{padding:34px 35px 30px}.ehs-carousel-text{margin:21px 0 27px}.ehs-carousel-text h1{max-width:680px;font-size:clamp(2.6rem,7vw,4rem)}.ehs-carousel-text p{max-width:680px}.ehs-carousel-photo-caption{left:26px;bottom:25px}.ehs-carousel-arrows{right:25px;bottom:18px}}
+@media(max-width:550px){.ehs-carousel-photo{height:260px}.ehs-carousel-copy{padding:26px 22px 25px}.ehs-carousel-topline{font-size:8px;gap:7px}.ehs-carousel-text h1{font-size:clamp(2.3rem,9vw,3.1rem);margin:13px 0 16px}.ehs-carousel-text p{font-size:13px;line-height:1.75}.ehs-carousel-actions{gap:9px}.ehs-carousel-primary,.ehs-carousel-secondary{white-space:normal}.ehs-carousel-controls{gap:17px}.ehs-carousel-photo-caption{left:18px;bottom:21px;font-size:8px;max-width:53%}.ehs-carousel-arrows{right:14px;bottom:12px}.ehs-carousel-arrows button{width:37px;height:37px}}
+@media(prefers-reduced-motion:reduce){.ehs-carousel-text{animation:none}.ehs-carousel-image,.ehs-carousel-dot{transition:none}}
