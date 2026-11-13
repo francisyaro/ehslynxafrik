@@ -5,7 +5,7 @@ import { services, sectors } from "@/lib/data";
 import { HeroSlideshow } from "@/components/hero-slideshow";
 import { AcademyPromo } from "@/components/academy-promo";
 
-const serviceIcons=[Waves,Leaf,Wind,ShieldCheck,FlaskConical,BookOpen];
+const serviceIcons=[Waves,Wind,Leaf,ShieldCheck,FlaskConical,BookOpen];
 
 export default function Home() {
   return <>

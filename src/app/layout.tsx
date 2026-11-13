@@ -9,6 +9,7 @@ import "./refinement.css";
 import "./carousel.css";
 import "./brands-shop.css";
 import "./academy-brand.css";
+import "./expertise.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://ehslynxafrik.com"),
