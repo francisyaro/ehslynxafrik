@@ -36,9 +36,10 @@ function TechnicalBlock({ block }: { block: ExpertiseBlock }) {
       </li>;
     })}</ol>;
   }
-  return <ul className={`expertise-list-bullets ${block.columns === 2 ? "expertise-list-bullets-split" : ""}`}>
+  if (block.type === "list") return <ul className={`expertise-list-bullets ${block.columns === 2 ? "expertise-list-bullets-split" : ""}`}>
     {block.items.map((item, index) => <li key={`${index}-${item.slice(0, 20)}`}>{item}</li>)}
   </ul>;
+  return null;
 }
 
 export function ExpertiseArticle({ content }: { content: ExpertiseLongform }) {
