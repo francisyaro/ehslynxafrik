@@ -19,7 +19,7 @@ test('homepage shows the seven new slides in supplied order', async ({page}) => 
   await expect(page.getByRole('link',{name:/Accéder à LYNX Academy/})).toHaveAttribute('href','https://lynx-academy.vercel.app/');
   await expect(page.getByRole('link',{name:'Boutique',exact:true}).first()).toHaveAttribute('href','https://www.lynxafrik.shop/');
   await expect(page.getByRole('heading',{name:'Des fabricants de référence'})).toBeVisible();
-  await expect(page.getByRole('link',{name:/Découvrir la boutique/})).toHaveAttribute('href','https://www.lynxafrik.shop/');
+  await expect(page.getByRole('link',{name:/Découvrir la boutique/}).last()).toHaveAttribute('href','https://www.lynxafrik.shop/');
   await expect(page.getByText('INSTRUMENTATION PROFESSIONNELLE')).toHaveCount(0);
   await expect(page.getByRole('img',{name:'Logo officiel LYNX Academy'})).toBeVisible();
   await expect(page.getByRole('link',{name:/Découvrir LYNX Academy/})).toHaveAttribute('href','https://lynx-academy.vercel.app/');
