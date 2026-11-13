@@ -1,0 +1,196 @@
+/* EHS LYNX AFRIK — Édition sobre / système visuel unifié
+   Couleurs : blanc minéral, bleu pétrole, vert institutionnel.
+   Le style s'applique à toutes les rubriques et à tous les parcours commerciaux. */
+:root {
+  --ink: #1d343b;
+  --deep: #16343b;
+  --forest: #215b4e;
+  --muted: #657a7d;
+  --lime: #dce9df;
+  --mint: #e8f1eb;
+  --paper: #fbfcfa;
+  --line: #e3e9e5;
+  --white: #fff;
+  --accent: #226f57;
+}
+body { background: var(--paper); color:var(--ink); font-family: Inter, "Segoe UI", Arial, sans-serif; }
+::selection { color:var(--deep); background:#d7e9dc; }
+.section { padding-block: 88px; }
+.section-header h2, .approach-content h2, .academy-top h2, .contact-aside h2 {
+  font-size: clamp(2.25rem,3.6vw,3.85rem);
+  letter-spacing:-.045em;
+  font-weight:600;
+}
+em { font-family: Georgia, "Times New Roman", serif; font-style:italic; font-weight:400; letter-spacing:-.035em; }
+.eyebrow { color:#377460; letter-spacing:.12em; font-size:10px; }
+.eyebrow.lime { color:#c9ded2; }
+.eyebrow-line { width:20px; height:1px; }
+.btn { border-radius:5px; min-height:49px; font-size:12px; transition:background .18s ease, color .18s ease, border-color .18s ease; }
+.btn:hover { transform:none; }
+.btn-lime, .btn-dark, .nav-cta { background:#205c4c; color:#fff; }
+.btn-lime:hover,.btn-dark:hover,.nav-cta:hover { background:#153e38; color:#fff; }
+.btn-ghost { color:#28594e; border:1px solid #c5d5ce; background:transparent; }
+.btn-ghost:hover { color:#173e33; background:#edf4ef; border-color:#9cbaaa; }
+.btn-outline-light { color:white; border-color:#7c9e94; }
+.text-link { color:#27644f; border-color:#aecbbc; font-size:12px; }
+.microbar { background:#f3f6f2; color:#536b67; border-bottom:1px solid var(--line); }
+.micro-dot { background:#4b9770; box-shadow:none; }
+.site-header { background:#fff; border-bottom:1px solid var(--line); box-shadow:0 3px 18px rgba(22,52,59,.025); }
+.nav-container { height:74px; }
+.brand-icon { background:white; border-color:#edf1eb; border-radius:4px; }
+.brand-wordmark strong { color:#244b51; font-size:20px; }
+.brand-wordmark strong span { color:#247451; }
+.main-nav a { color:#425e5b; font-size:12px; }
+.main-nav a:hover,.main-nav a.active { color:#1f6853; }
+.main-nav a.active:after { background:#397b63; }
+.cart-nav { border-color:var(--line); }
+.cart-nav>span { background:#d9eadc; }
+
+/* Page d'accueil : mettre les métiers et le contenu au premier plan. */
+.hero-section { background:#fbfcfa; color:#1d343b; border-bottom:1px solid var(--line); }
+.hero-section:before,.hero-noise { display:none; }
+.hero-main { min-height:605px; }
+.hero-copy { padding-block:62px; }
+.hero-eyebrow { color:#34715c; }
+.dot-pulse { background:#43896b; box-shadow:0 0 0 4px #e3eee6; }
+.hero-copy h1 { font-size:clamp(3rem,4.95vw,5.75rem); letter-spacing:-.058em; line-height:1.08; margin:25px 0; }
+.hero-copy h1 em { color:#247452; }
+.hero-copy>p { color:#607679; font-size:15px; line-height:1.8; }
+.hero-copy .btn-ghost { color:#205947; }
+.hero-proof { color:#647b74; margin-top:37px; }
+.hero-proof-icon { color:#347a5b; border-color:#cdded1; }
+.hero-art { top:42px;bottom:42px;border-radius:6px;box-shadow:none;right:0; width:44%; }
+.hero-art:after { background:linear-gradient(0deg,rgba(10,37,38,.32),transparent 55%); }
+.art-grid { border-color:transparent; }
+.radar-tag { background:rgba(17,45,46,.68);color:#fff;border-color:rgba(255,255,255,.15); }
+.signal-card { background:#fff; color:#1f4142; border:1px solid #e3ebe4; border-radius:5px; box-shadow:0 8px 30px #0c303323; }
+.signal-circle { color:#32715d;background:#eef5ed; }
+.hero-bottom { color:#6b827e; border-top:1px solid var(--line); }
+.hero-bottom strong { color:#23474a; }
+.hero-bottom strong span { color:#3c876c; }
+.hero-bottom>a { color:#356f5a; border-color:#cddbd4; }
+
+/* Partenaires et services : peu de décoration, hiérarchie nette. */
+.trust-strip { background:#f5f7f3; }
+.trust-inner { min-height:86px; }
+.trust-names { color:#57736c; }
+.trust-names span { font-weight:750; letter-spacing:-.03em; }
+.expertises-section,.catalog-section,.academy-section { background:#fff; }
+.service-tile { min-height:277px;padding:27px 30px;background:#fff; }
+.service-tile:hover { background:#f7faf7; }
+.service-symbol { width:56px;height:56px;background:#f1f6f2;border-radius:8px;color:#397861;border:1px solid #e2ebe4;margin:23px 0 18px; }
+.service-tile h3 { font-weight:620; font-size:19px; }
+.service-tile p { color:#6a8079; font-size:13px; }
+.service-cta { color:#39765b; }
+
+/* Méthode et produits. */
+.approach-section { background:#f5f7f4;padding-block:85px; }
+.approach-grid { gap:64px; }
+.approach-visual { height:550px; border-radius:5px; }
+.approach-image { filter:saturate(.75) contrast(.96); }
+.approach-corner { background:#e6eee5; color:#306b57; }
+.approach-content>p { color:#607777; }
+.approach-list { border-color:var(--line); }
+.approach-list>div { border-color:var(--line); }
+.catalog-grid { gap:16px; }
+.product-card { border-radius:5px; }
+.product-card:hover { transform:none; box-shadow:0 10px 26px rgba(20,54,46,.07); }
+.product-image { background:#f1f5f1; }
+.product-image:before { background:radial-gradient(circle at 55% 38%,#fbfcfb,transparent 65%); }
+.product-card-content { padding:23px; }
+.product-card-foot button,.quote-suggestions button { background:#eff5ef;color:#2a6952; }
+.product-card-foot button:hover { background:#e0eee2; }
+
+/* Une seule séquence sombre, pour rythmer la page sans la surcharger. */
+.sectors-section { background:#183a40; padding:88px 0; }
+.sectors-section:before { opacity:.25; }
+.sectors-grid h2 { font-size:clamp(2.5rem,4vw,4rem); }
+.sectors-grid h2 em { color:#d6e9dc; }
+.sectors-section .btn-outline-light:hover { background:#28534f; }
+.closing-section { background:#eef4ef;color:#1d3d3b; }
+.closing-section .eyebrow { color:#39755b; }
+.closing-section h2 { font-size:clamp(2.35rem,3.8vw,4rem); }
+.closing-section h2 em { color:#2d7858; }
+.closing-inner>div:nth-child(2)>p { color:#617b72; }
+.closing-inner .btn-lime { background:#205c4c;color:#fff; }
+
+/* Académie : même identité, sans bloc vert fluo. */
+.academy-intro { background:#edf4ed; color:#1e4940; }
+.academy-intro-icon { background:#fff;color:#356f5d; }
+.academy-intro>a { color:#275b49; }
+.learning-grid { gap:16px; }
+.learning-card { background:#fff;border:1px solid var(--line); }
+.learning-card:hover { background:#f9fbf9; transform:none; }
+.learning-kind,.offer-kind { color:#377962; }
+.academy-hero { background:#eff5ef; color:#21443f; }
+.academy-hero h1 em { color:#327f5c; }
+.academy-hero>div>p { color:#55766b; }
+.academy-hero .eyebrow { color:#38775f; }
+.academy-logo-title>span:first-child { background:#22594b;color:#fff; }
+.academy-star { color:#38836a; }
+.academy-offer { border-radius:5px;min-height:320px; }
+.academy-method { background:#f4f7f4; color:#24423e;padding-block:85px; }
+.academy-method h2 em { color:#377a5b; }
+.academy-method-grid>div:nth-child(2)>p { color:#617a72; }
+.method-points span { color:#385d54;border-color:#d5e3d8; }
+.academy-method .eyebrow.lime { color:#39785b; }
+
+/* Toutes les pages intérieures : titres sobres et surfaces claires. */
+.page-hero { padding:74px 0 79px; }
+.page-hero h1 { font-size:clamp(2.8rem,5.1vw,5.5rem);letter-spacing:-.055em;line-height:1.08; }
+.page-hero-dark,.catalog-hero { background:#f2f6f2; color:#1e4040; border-bottom:1px solid var(--line); }
+.page-hero-dark:after,.catalog-hero:after { opacity:.25;border-color:#d3e3d8;box-shadow:none; }
+.page-hero>div>p { color:#627d75; font-size:15px; }
+.page-hero h1 em { color:#2b7b5b; }
+.page-hero-benefits span { color:#426d5c; }
+.back-link { color:#39725f; }
+.page-callout { background:#1f4848; }
+.detail-aside { background:#f0f6f0;border:1px solid #e0eae2; }
+.product-detail-section { background:#fbfcfa; }
+.product-detail-art,.product-image { background:#f1f5f1; }
+.expertise-icon { background:#eff5ef;color:#397861; border-radius:8px; }
+.expertise-item:hover { background:#f7faf7; }
+.about-brand { background:#f1f6f1; }
+.about-values svg { color:#37785d; }
+.resource-card { border-radius:5px; min-height:315px; }
+.resource-card-icon { background:#eff5ef; color:#35705a; border-radius:6px; }
+.contact-form-panel { border-radius:5px;box-shadow:0 6px 26px #123b3520; }
+.contact-lines>a>span,.contact-lines>div>span { background:#f1f6f1;color:#376d59; }
+.field input,.field select,.field textarea { background:#fff;border-color:#dce7df;border-radius:4px;font-size:13px; }
+.field input:focus,.field select:focus,.field textarea:focus { border-color:#43876d; box-shadow:0 0 0 3px #dbe9de; }
+.quote-suggestions,.quote-drawer { background:#fff; }
+
+/* Pied de page institutionnel sur fond clair. */
+.site-footer { background:#f4f7f3; color:#28463e; padding-top:68px; border-top:1px solid #dce7df; }
+.footer-top { border-color:#d8e5dc;padding-bottom:55px; }
+.footer-lead h2 { font-size:clamp(2.5rem,4vw,4.4rem);font-weight:550; }
+.footer-lead h2 em { color:#2d7658; }
+.footer-links-group h3 { color:#40745d; }
+.footer-links-group a,.footer-address>* { color:#526f68; }
+.footer-links-group a:hover { color:#1e624d; }
+.footer-identity strong { color:#25464a; }
+.footer-identity strong span { color:#367f5f; }
+.footer-identity small { color:#728780; }
+.footer-legal { border-color:#d9e5dc;color:#698178; }
+
+/* Actions inclusives et animations mesurées. */
+:where(a,button,input,textarea,select):focus-visible { outline:2px solid #246c56;outline-offset:3px; }
+@media (max-width:900px) {
+  .section { padding-block:70px; }
+  .hero-main { min-height:auto; }
+  .hero-art { right:0; }
+  .approach-section,.sectors-section,.academy-method { padding-block:70px; }
+}
+@media (max-width:700px) {
+  .hero-copy { padding-block:48px 25px; }
+  .hero-copy h1 { font-size:clamp(2.75rem,10vw,4.4rem); }
+  .hero-art { position:relative;top:auto;right:auto;bottom:auto;width:100%;height:330px; }
+  .hero-bottom { margin-top:20px; }
+  .page-hero { padding:62px 0; }
+  .page-hero h1 { font-size:clamp(2.55rem,9vw,4.2rem); }
+  .site-footer { padding-top:52px; }
+  .footer-top { padding-bottom:40px; }
+}
+@media (prefers-reduced-motion:reduce){
+  *, *:before, *:after { scroll-behavior:auto!important;transition-duration:0s!important;animation-duration:0s!important; }
+}

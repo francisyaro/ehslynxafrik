@@ -1,0 +1,81 @@
+name: CI
+on:
+  pull_request:
+    branches: [main, develop]
+  push:
+    branches: [main, develop]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  quality:
+    name: Lint, types, tests & build
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+      - name: Install dependencies
+        run: |
+          if [[ -f package-lock.json ]]; then npm ci --no-audit --no-fund; else npm install --no-audit --no-fund; echo '::warning::Commit a package-lock.json after dependency installation for reproducible builds.'; fi
+      - name: Static analysis
+        run: npm run lint
+      - name: Check TypeScript
+        run: npm run typecheck
+      - name: Unit tests
+        run: npm test
+      - name: Production build
+        run: npm run build
+      - name: Verify migration files contain no destructive statements
+        shell: bash
+        run: |
+          if grep -Ein '(^|[[:space:]])(drop|truncate)[[:space:]]|alter[[:space:]]+table.*drop[[:space:]]+column' supabase/migrations/*.sql; then
+            echo 'Destructive database migrations require a separate approved procedure.'
+            exit 1
+          fi
+
+  preview:
+    name: Deploy PR Preview on Vercel
+    if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+    needs: quality
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+      - run: npm install --no-audit --no-fund
+      - name: Check deployment credentials
+        id: credentials
+        shell: bash
+        run: |
+          if [[ -n "$VERCEL_TOKEN" && -n "$VERCEL_ORG_ID" && -n "$VERCEL_PROJECT_ID" ]]; then
+            echo 'ready=true' >> "$GITHUB_OUTPUT"
+          else
+            echo '::notice::Preview unavailable until Vercel secrets are configured.'
+            echo 'ready=false' >> "$GITHUB_OUTPUT"
+          fi
+      - name: Install Vercel CLI
+        if: steps.credentials.outputs.ready == 'true'
+        run: npm install --global vercel@latest
+      - name: Pull preview configuration
+        if: steps.credentials.outputs.ready == 'true'
+        run: vercel pull --yes --environment=preview --token="$VERCEL_TOKEN"
+      - name: Build Vercel preview
+        if: steps.credentials.outputs.ready == 'true'
+        run: vercel build --token="$VERCEL_TOKEN"
+      - name: Deploy preview
+        if: steps.credentials.outputs.ready == 'true'
+        run: |
+          vercel deploy --prebuilt --token="$VERCEL_TOKEN" > deployment-url.txt
+          echo "Preview: $(cat deployment-url.txt)" >> "$GITHUB_STEP_SUMMARY"
