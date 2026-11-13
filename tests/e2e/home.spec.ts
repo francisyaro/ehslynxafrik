@@ -1,19 +1,28 @@
 import { test, expect } from '@playwright/test';
 
-test('homepage presents the three business pillars', async ({page}) => {
+test('homepage shows the seven new slides in supplied order', async ({page}) => {
   await page.goto('/');
-  await expect(page.getByRole('heading',{level:1})).toContainText('Mieux comprendre les risques');
-  await page.getByRole('button',{name:'Diapositive suivante'}).click();
-  await expect(page.getByRole('heading',{level:1})).toContainText('La qualité de l’air intérieur');
-  await page.getByRole('button',{name:'Afficher : MESURES DU BRUIT ET DES VIBRATIONS'}).click();
-  await expect(page.getByRole('heading',{level:1})).toContainText('Mesurer avec précision');
-  await expect(page.getByRole('link',{name:'Boutique',exact:true}).first()).toHaveAttribute('href', 'https://www.lynxafrik.shop/');
+  const h1=page.getByRole('heading',{level:1});
+  const titles=[
+    'Mesurer avec précision',
+    'Les poussières organiques',
+    'Sur les sites miniers',
+    'Champs électromagnétiques',
+    'Radioprotection',
+    'Des bâtiments plus sains',
+    'La prévention s’apprend',
+  ];
+  for(let i=0;i<titles.length;i++){
+    await expect(h1).toContainText(titles[i]);
+    if(i<titles.length-1)await page.getByRole('button',{name:'Diapositive suivante'}).click();
+  }
+  await expect(page.getByRole('link',{name:/Accéder à LYNX Academy/})).toHaveAttribute('href','https://lynx-academy.vercel.app/');
+  await expect(page.getByRole('link',{name:'Boutique',exact:true}).first()).toHaveAttribute('href','https://www.lynxafrik.shop/');
   await expect(page.getByRole('heading',{name:'Des fabricants de référence'})).toBeVisible();
-  await expect(page.getByRole('link',{name:/Découvrir la boutique/})).toHaveAttribute('href', 'https://www.lynxafrik.shop/');
+  await expect(page.getByRole('link',{name:/Découvrir la boutique/})).toHaveAttribute('href','https://www.lynxafrik.shop/');
   await expect(page.getByText('INSTRUMENTATION PROFESSIONNELLE')).toHaveCount(0);
   await expect(page.getByRole('img',{name:'Logo officiel LYNX Academy'})).toBeVisible();
-  await expect(page.getByRole('link',{name:/Découvrir LYNX Academy/})).toHaveAttribute('href', 'https://lynx-academy.vercel.app/');
-  await expect(page.getByRole('link',{name:/LYNX Academy/}).first()).toHaveAttribute('href', 'https://lynx-academy.vercel.app/');
+  await expect(page.getByRole('link',{name:/Découvrir LYNX Academy/})).toHaveAttribute('href','https://lynx-academy.vercel.app/');
 });
 
 test('quote cart adds a selected product', async ({page}) => {
@@ -30,14 +39,13 @@ test('health endpoint is available', async ({request}) => {
 });
 
 
-test('hero slideshow advances automatically', async ({page}) => {
+test('hero slideshow advances automatically after seven seconds', async ({page}) => {
   await page.clock.install();
   await page.goto('/');
-  await expect(page.getByRole('heading',{level:1})).toContainText('Mieux comprendre les risques');
+  await expect(page.getByRole('heading',{level:1})).toContainText('Mesurer avec précision');
   await page.clock.fastForward(7200);
-  await expect(page.getByRole('heading',{level:1})).toContainText('La qualité de l’air intérieur');
+  await expect(page.getByRole('heading',{level:1})).toContainText('Les poussières organiques');
 });
-
 
 test('legacy Academy route redirects temporarily to dedicated portal',async ({request}) => {
   const response=await request.get('/academy',{maxRedirects:0});

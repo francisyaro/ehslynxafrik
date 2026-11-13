@@ -42,3 +42,11 @@
 @media(max-width:900px){.ehs-carousel-frame{grid-template-columns:1fr;min-height:auto}.ehs-carousel-photo{order:-1;min-height:0;height:330px}.ehs-carousel-copy{padding:34px 35px 30px}.ehs-carousel-text{margin:21px 0 27px}.ehs-carousel-text h1{max-width:680px;font-size:clamp(2.6rem,7vw,4rem)}.ehs-carousel-text p{max-width:680px}.ehs-carousel-photo-caption{left:26px;bottom:25px}.ehs-carousel-arrows{right:25px;bottom:18px}}
 @media(max-width:550px){.ehs-carousel-photo{height:260px}.ehs-carousel-copy{padding:26px 22px 25px}.ehs-carousel-topline{font-size:8px;gap:7px}.ehs-carousel-text h1{font-size:clamp(2.3rem,9vw,3.1rem);margin:13px 0 16px}.ehs-carousel-text p{font-size:13px;line-height:1.75}.ehs-carousel-actions{gap:9px}.ehs-carousel-primary,.ehs-carousel-secondary{white-space:normal}.ehs-carousel-controls{gap:17px}.ehs-carousel-photo-caption{left:18px;bottom:21px;font-size:8px;max-width:53%}.ehs-carousel-arrows{right:14px;bottom:12px}.ehs-carousel-arrows button{width:37px;height:37px}}
 @media(prefers-reduced-motion:reduce){.ehs-carousel-text{animation:none}.ehs-carousel-image,.ehs-carousel-dot{transition:none}}
+
+/* Seven-slide carousel: compact navigation on narrow viewports */
+@media (max-width:550px){
+  .ehs-carousel-controls{gap:11px}
+  .ehs-carousel-dots{gap:5px}
+  .ehs-carousel-dot{width:12px}
+  .ehs-carousel-dot.is-current{width:25px}
+}
