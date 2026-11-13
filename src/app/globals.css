@@ -111,7 +111,7 @@ h1,h2,h3,p { margin-top:0; }
 .approach-section {background:#eef3ea;padding:100px 0;overflow:hidden;}
 .approach-grid {display:grid;grid-template-columns:49% 51%;gap:85px;align-items:center;}
 .approach-visual {position:relative;height:625px;border-radius:5px;overflow:hidden;background:#2c5f55;}
-.approach-image {position:absolute;inset:0;background:linear-gradient(0deg,rgba(6,30,30,.62),rgba(3,38,34,.12)),url('/visuals/terrain-reference.webp') center center/cover;filter:saturate(.74) contrast(1.05);transform:scale(1.03);}
+.approach-image {position:absolute;inset:0;background:linear-gradient(0deg,rgba(6,30,30,.62),rgba(3,38,34,.12)),url('/visuals/pollution-aux-pesticides.webp') center center/cover;filter:saturate(.74) contrast(1.05);transform:scale(1.03);}
 .approach-visual:after {position:absolute;content:"";inset:0;border:22px solid rgba(0,0,0,.04);pointer-events:none;}
 .approach-image-label {position:absolute;bottom:54px;left:48px;z-index:2;}
 .label-tiny {font-size:11px;letter-spacing:.16em;font-weight:700;color:#c9f5b3;}
